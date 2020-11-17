@@ -44,7 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop',
-    'storages' 
+    'storages',
+    'cart',
+    'coupon', 
+    'order',
     
 ]
 
@@ -71,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart',
             ],
         },
     },
@@ -163,4 +167,16 @@ AWS_LOCATION = ''
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
+
 DEFAULT_FILE_STORAGE = 'config.asset_storage.MediaStorage'
+
+# cart앱의 session id
+CART_ID = 'cart_in_session'
+
+# iamport 결제 API
+IAMPORT_KEY = '8059234570020752'
+IAMPORT_SECRET = 'iHLXRiNFjkzBE09n3eF9ZfpC0BKkVvXdcIa41YJljjWYj5lnk0xjfWWgxGAtcxGogRsiQcD9vA7PFscZ'
