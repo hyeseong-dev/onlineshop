@@ -32,7 +32,7 @@
                             {{ item.quantity_form.quantity }}
                             {{ item.quantity_form.is_update }}
                             <input type="submit" class="btn btn-primary" value="Update">
-                            {% csrf_token %}
+                            {% csrf_token %} <!-- html형태의 csrf 이고 만약 중괄호 두개 형태인 경우 csrf_token 값 그 자체를 의미함-->
                         </form>
                     </td>
                     <td><a href="{% url "cart:product_remove" product.id %}">Remove</a></td>
